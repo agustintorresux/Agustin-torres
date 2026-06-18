@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agustín Torres – Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0F0F11;
+      --bg2: #16161A;
+      --bg3: #1C1C22;
+      --accent: #4F6EF7;
+      --accent2: #7B93FA;
+      --warm: #F2F0EB;
+      --muted: #8A8A9A;
+      --border: #2A2A35;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--warm);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 56px;
+    }
+
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79, 110, 247, 0.12);
+      border: 1px solid rgba(79, 110, 247, 0.3);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent2);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .available-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      color: var(--accent2);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .tagline strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .location svg { opacity: 0.6; }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 10px;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: #C8C6BF;
+      line-height: 1.75;
+    }
+
+    /* ── Experience card ── */
+    .exp-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .exp-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--warm);
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .exp-tag {
+      font-size: 11px;
+      font-weight: 500;
+      background: rgba(79, 110, 247, 0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(79, 110, 247, 0.2);
+      border-radius: 6px;
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-list li {
+      font-size: 14px;
+      color: #B0AEA8;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.55;
+    }
+
+    .exp-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* ── Skills grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .skill-group-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-group-title .level-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .level-tag.solid { background: rgba(79, 110, 247, 0.15); color: var(--accent2); }
+    .level-tag.learning { background: rgba(255, 185, 80, 0.12); color: #FFB950; }
+
+    /* ── Skill bar ── */
+    .skill-item {
+      margin-bottom: 12px;
+    }
+
+    .skill-item:last-child { margin-bottom: 0; }
+
+    .skill-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .skill-name {
+      font-size: 13px;
+      color: #C8C6BF;
+    }
+
+    .skill-pct {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .bar-track {
+      height: 4px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform-origin: left;
+      animation: growBar 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      transform: scaleX(0);
+    }
+
+    @keyframes growBar {
+      to { transform: scaleX(1); }
+    }
+
+    .bar-fill.muted-bar {
+      background: linear-gradient(90deg, #FFB950, #FFD580);
+    }
+
+    /* ── Tools ── */
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tool-chip {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .tool-chip .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tool-chip.learning-tool .tool-dot {
+      background: #FFB950;
+    }
+
+    /* ── Focus & Goals ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .info-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .info-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 12px;
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .info-list li {
+      font-size: 13px;
+      color: #B0AEA8;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.5;
+    }
+
+    .info-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 12px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact ── */
+    .contact-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .contact-info {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact-info strong {
+      color: var(--warm);
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { opacity: 0.8; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--warm);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .bar-fill { animation: none; transform: scaleX(1); }
+      .available-badge .dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="available-badge">
+      <span class="dot"></span>
+      Open to opportunities
+    </div>
+    <h1>Agustín <span>Torres</span></h1>
+    <p class="tagline">
+      <strong>UX/UI Student</strong> · <strong>Marketing Beginner</strong> · 
+      Logistics &amp; Operations background
+    </p>
+    <span class="location">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Brisbane, Australia
+    </span>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- About -->
+  <div class="section">
+    <p class="section-label">About</p>
+    <p class="about-text">
+      Currently transitioning into the digital field, with focus on UX/UI design and marketing execution. 
+      I bring professional experience from logistics and supply chain operations in the aerospace industry — 
+      environments where precision, documentation accuracy, and strict process compliance aren't optional. 
+      That mindset travels well into digital work.
+    </p>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- Experience -->
+  <div class="section">
+    <p class="section-label">Experience</p>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Logistics Operator</div>
+          <div class="exp-company">Kuehne + Nagel / Rhenus LTK &mdash; Client: Airbus</div>
+        </div>
+        <span class="exp-tag">Aerospace</span>
+      </div>
+      <ul class="exp-list">
+        <li>Managed logistics operations within a high-precision aerospace supply chain</li>
+        <li>Followed strict operational procedures and quality standards</li>
+        <li>Handled materials and components under controlled workflows</li>
+        <li>Ensured accuracy in documentation and process execution</li>
+        <li>Worked in coordination with international teams and industrial clients</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- Skills -->
+  <div class="section">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">
+          Operations &amp; Logistics
+          <span class="level-tag solid">Proficient</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Process execution</span><span class="skill-pct">90%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Attention to detail</span><span class="skill-pct">95%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Quality assurance</span><span class="skill-pct">85%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Workflow coordination</span><span class="skill-pct">85%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">
+          UX/UI
+          <span class="level-tag learning">Learning</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Figma basics</span><span class="skill-pct">35%</span></div>
+          <div class="bar-track"><div class="bar-fill muted-bar" style="width:35%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Layouts &amp; user flows</span><span class="skill-pct">30%</span></div>
+          <div class="bar-track"><div class="bar-fill muted-bar" style="width:30%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">
+          Marketing
+          <span class="level-tag learning">Beginner</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Email marketing</span><span class="skill-pct">25%</span></div>
+          <div class="bar-track"><div class="bar-fill muted-bar" style="width:25%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Campaign structure</span><span class="skill-pct">20%</span></div>
+          <div class="bar-track"><div class="bar-fill muted-bar" style="width:20%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- Tools -->
+  <div class="section">
+    <p class="section-label">Tools</p>
+    <div class="tools-row">
+      <span class="tool-chip"><span class="tool-dot"></span>Figma</span>
+      <span class="tool-chip"><span class="tool-dot"></span>Google Sheets</span>
+      <span class="tool-chip"><span class="tool-dot"></span>Notion</span>
+      <span class="tool-chip learning-tool"><span class="tool-dot"></span>Klaviyo <small style="color:var(--muted);font-size:11px">(learning)</small></span>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- Focus & Goals -->
+  <div class="section">
+    <p class="section-label">Now &amp; next</p>
+    <div class="two-col">
+      <div class="info-card">
+        <div class="info-card-title">Current focus</div>
+        <ul class="info-list">
+          <li>Learning Klaviyo through hands-on practice</li>
+          <li>Building small portfolio projects</li>
+          <li>Developing marketing fundamentals</li>
+          <li>Preparing for execution-focused digital roles</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Roles I'm targeting</div>
+        <ul class="info-list">
+          <li>Email marketing operations</li>
+          <li>UX/UI support roles</li>
+          <li>Digital production &amp; workflow coordination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- Contact -->
+  <div class="section">
+    <p class="section-label">Contact</p>
+    <div class="contact-bar">
+      <div class="contact-info">
+        <strong>Agustín Torres</strong>
+        Brisbane, Australia
+      </div>
+      <div class="contact-links">
+        <a href="#" class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email me
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
